@@ -10,7 +10,18 @@ class Deck extends Component {
     super(props);
 
     const panResponder = PanResponder.create({
+      // should this pan responder respond to the current gesture?
+      // returns true or false
+      onStartShouldSetPanResponder: () => true,
 
+      // is a callback. will be called any time the user drags their finger
+      // across the screen.
+      onPanResponderMove: (event, gesture) => {
+        console.log(gesture);
+      },
+
+      // when the user removes their finger from the screen
+      onPanResponderRelease: () => {}
     });
 
     this.state = { panResponder };
