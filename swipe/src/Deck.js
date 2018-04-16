@@ -17,7 +17,8 @@ class Deck extends Component {
       // is a callback. will be called any time the user drags their finger
       // across the screen.
       onPanResponderMove: (event, gesture) => {
-        console.log(gesture);
+
+
       },
 
       // when the user removes their finger from the screen
@@ -42,7 +43,7 @@ class Deck extends Component {
 
   render() {
     return (
-      <View>
+      <View {...this.state.panResponder.panHandlers}>
         {this.renderCards()}
       </View>
     );
