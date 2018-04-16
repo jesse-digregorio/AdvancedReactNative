@@ -9,6 +9,8 @@ class Deck extends Component {
   constructor(props) {
     super(props);
 
+    const position = new  Animated.ValueXY();
+
     const panResponder = PanResponder.create({
       // should this pan responder respond to the current gesture?
       // returns true or false
@@ -17,7 +19,7 @@ class Deck extends Component {
       // is a callback. will be called any time the user drags their finger
       // across the screen.
       onPanResponderMove: (event, gesture) => {
-
+        position.setValue({ x: gesture.dx, y: gesture.dy })
 
       },
 
@@ -25,13 +27,14 @@ class Deck extends Component {
       onPanResponderRelease: () => {}
     });
 
-    this.state = { panResponder };
+    this.state = { panResponder, position };
     // while this is convention (putting panResponder in state) according to SG,
     // we will never call .setState on panResponder.
     // it could just as easily be placed directly in the object like so:
     //    this.panResponder = { panResponder };
     // We are only putting it in state, because that is the current convention.
     //
+    // same for position, added in lesson 20
   }
 
   renderCards() {
@@ -43,9 +46,11 @@ class Deck extends Component {
 
   render() {
     return (
-      <View {...this.state.panResponder.panHandlers}>
+      <Animated.View 
+        style={this.state.position.getLayout()}
+        {...this.state.panResponder.panHandlers}>
         {this.renderCards()}
-      </View>
+      </Animated.View>
     );
   }
 }
