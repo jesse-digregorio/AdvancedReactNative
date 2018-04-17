@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
 
 class Deck extends Component {
   constructor(props) {
@@ -27,7 +28,17 @@ class Deck extends Component {
       },
 
       // when the user removes their finger from the screen
-      onPanResponderRelease: () => {}
+      onPanResponderRelease: (event, gesture) => {
+        if (gesture.dx > SWIPE_THRESHOLD) {
+          console.log('swipe right');
+        }
+        else if (gesture.dx < -SWIPE_THRESHOLD) {
+          console.log('swipe left');
+        }
+        else {
+          this.resetPosition();
+        }
+      }
     });
 
     this.state = { panResponder, position };
@@ -38,6 +49,13 @@ class Deck extends Component {
     // We are only putting it in state, because that is the current convention.
     //
     // same for position, added in lesson 20
+  }
+
+  resetPosition() {
+    Animated.spring(this.state.position, {
+      toValue: { x: 0, y: 0 }
+    }).start();
+
   }
 
   getCardStyle() {
