@@ -57,7 +57,14 @@ class Deck extends Component {
     Animated.timing(this.state.position,
       { toValue: { x: x, y: 0 },
         duration: SWIPE_OUT_DURATION
-    }).start();
+    }).start(() => this.onSwipeComplete(direction));
+  }
+
+  onSwipeComplete(direction) {
+    const { onSwipeRight, onSwipeLeft } = this.props;
+
+    direction === 'right' ? onSwipeRight() : onSwipeLeft();
+
   }
 
   resetPosition() {
