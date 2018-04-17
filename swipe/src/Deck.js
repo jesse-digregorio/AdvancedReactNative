@@ -42,7 +42,7 @@ class Deck extends Component {
       }
     });
 
-    this.state = { panResponder, position };
+    this.state = { panResponder, position, index: 0 };
     // while this is convention (putting panResponder in state) according to SG,
     // we will never call .setState on panResponder.
     // it could just as easily be placed directly in the object like so:
@@ -61,9 +61,10 @@ class Deck extends Component {
   }
 
   onSwipeComplete(direction) {
-    const { onSwipeRight, onSwipeLeft } = this.props;
+    const { onSwipeRight, onSwipeLeft, data } = this.props;
+    const item = data[this.state.index];
 
-    direction === 'right' ? onSwipeRight() : onSwipeLeft();
+    direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
 
   }
 
