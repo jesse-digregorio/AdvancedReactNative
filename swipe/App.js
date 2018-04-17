@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
+//import DeckExplore from './src/DeckExplore';
 
 const DATA = [
   { id: 1, text: 'Card #1', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg' },
