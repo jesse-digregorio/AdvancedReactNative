@@ -96,8 +96,10 @@ class Deck extends Component {
   }
 
   renderCards() {
-    return this.props.data.map((item, index) => {
-      if (index === 0) {
+    return this.props.data.map((item, i) => {
+      if (i < this.state.index) { return null; }
+
+      if (i === this.state.index) {
         return (
           <Animated.View
             key={item.id}
@@ -108,10 +110,10 @@ class Deck extends Component {
           </Animated.View>
         );
       }
+
       return this.props.renderCard(item);
     });
   }
-
 
   render() {
     return (
