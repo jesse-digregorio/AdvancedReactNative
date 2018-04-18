@@ -3,7 +3,9 @@ import {
   View,
   Animated,
   PanResponder,
-  Dimensions
+  Dimensions,
+  LayoutAnimation,
+  UIManager
 } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -55,6 +57,14 @@ class Deck extends Component {
     // We are only putting it in state, because that is the current convention.
     //
     // same for position, added in lesson 20
+  }
+
+  componentWillUpdate() {
+    // Andriod compatibility
+    // line below basically means: if this function exists, call it with (true).
+    UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+
+    LayoutAnimation.spring();
   }
 
   forceSwipe(direction) {
