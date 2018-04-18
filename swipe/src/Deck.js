@@ -59,6 +59,14 @@ class Deck extends Component {
     // same for position, added in lesson 20
   }
 
+  // called when the component is about to be re-rendered with a
+  // new set of props
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== this.props.data) {
+      this.setState({ index: 0 });
+    }
+  }
+
   componentWillUpdate() {
     // Andriod compatibility
     // line below basically means: if this function exists, call it with (true).
