@@ -22,8 +22,12 @@ module.exports = (req, res) => {
 
   })
   .then(() => {
-    res.send('ok');
-    return null; // Warning: ESLint: Expected to return a value at the end of an arrow function.
+    return admin.auth().createCustomToken(phone);
+    //res.send('ok');
+    //return null; // Warning: ESLint: Expected to return a value at the end of an arrow function.
+  })
+  .then((token) => {
+    return res.send({ token: token });
   })
   .catch((error) => {
     res.status(422).send({ error });
