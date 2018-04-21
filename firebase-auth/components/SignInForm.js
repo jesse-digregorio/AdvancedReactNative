@@ -10,12 +10,12 @@ class SignInForm extends Component {
   state = {
     phone: '',
     code: '',
-    token: null;
+    token: null
   };
 
   handleSubmit = async () => {
     try {
-      console.log(createUserURI); console.log(requestPassURI);
+      console.log(verifyOneTimePasswordUri);
       await axios.post(verifyOneTimePasswordUri,
         {
           phone: this.state.phone,
@@ -41,7 +41,7 @@ class SignInForm extends Component {
         <FormLabel>Code</FormLabel>
           <FormInput
             value={this.state.code}
-            onChangeText={phone => this.setState({ code })}
+            onChangeText={code => this.setState({ code })}
           />
         </View>
         <Button onPress={this.handleSubmit} title="Sign In" />
