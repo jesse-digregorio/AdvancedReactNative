@@ -26,6 +26,7 @@ class SignUpForm extends Component {
 
   handleSubmit = async () => {
     try {
+      console.log(createUserURI); console.log(requestPassURI);
       await axios.post(createUserURI, { phone: this.state.phone });
       await axios.post(requestPassURI, { phone: this.state.phone });
     }
