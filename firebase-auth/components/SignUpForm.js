@@ -4,6 +4,11 @@ import { FormLabel, FormInput, Button } from 'react-native-elements';
 
 
 class SignUpForm extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   state = { phone: '' };
+  // }
+  // the line below is equivalent to the above constructor - StephenG
   state = { phone: '' };
 
   render() {
