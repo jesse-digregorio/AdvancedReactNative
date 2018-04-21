@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
+import axios from 'axios';
 
+const ROOT_URL = 'https://us-central1-one-time-password-fb7e2.cloudfunctions.net';
+const createUserURI = `${ROOT_URL}/createUser`;
+const requestPassURI = `${ROOT_URL}/requestOneTimePassword`;
 
 class SignUpForm extends Component {
   // constructor(props) {
@@ -10,6 +14,26 @@ class SignUpForm extends Component {
   // }
   // the line below is equivalent to the above constructor - StephenG
   state = { phone: '' };
+
+
+  handleSubmit = () => {
+    axios.post(createUserURI, { phone: this.state.phone })
+      .then(() => {
+        axios.post(requestPassURI, { phone: this.state.phone })
+      });
+
+  }
+
+// the classic way of declaring this function, below, would
+// require us to do a '.bind(this)' where it is provided to a
+// component (e.g. the Button below), in order to ensure using 'this' inside the
+// function, refers to the correct context.
+//    The above way, using and arrow function, removes the need
+//    to do the 'bind(this)'. But is the same in all other
+//    aspects.
+  // handleSubmit() {
+  //
+  // }
 
   render() {
     return (
