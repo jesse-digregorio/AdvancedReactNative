@@ -15,13 +15,23 @@ class SignUpForm extends Component {
   // the line below is equivalent to the above constructor - StephenG
   state = { phone: '' };
 
+  // handleSubmit = () => {
+  //   // going to change this to use the async await system
+  //
+  //   axios.post(createUserURI, { phone: this.state.phone })
+  //     .then(() => {
+  //       axios.post(requestPassURI, { phone: this.state.phone })
+  //     });
+  // }
 
-  handleSubmit = () => {
-    axios.post(createUserURI, { phone: this.state.phone })
-      .then(() => {
-        axios.post(requestPassURI, { phone: this.state.phone })
-      });
-
+  handleSubmit = async () => {
+    try {
+      await axios.post(createUserURI, { phone: this.state.phone });
+      await axios.post(requestPassURI, { phone: this.state.phone });
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
 // the classic way of declaring this function, below, would
