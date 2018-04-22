@@ -15,7 +15,29 @@ export default class App extends React.Component {
   render() {
     const MainNavigator = TabNavigator({
       welcome: { screen: WelcomeScreen },
-      auth: { screen: AuthScreen }
+      auth: { screen: AuthScreen },
+      main: {
+        screen: TabNavigator({
+          map: { screen: MapScreen },
+          deck: { screen: DeckScreen },
+          review: {
+            screen: StackNavigator({
+              review: { screen: ReviewScreen },
+              settings: { screen: SettingsScreen }
+            })
+          }
+        }, {
+          tabBarPosition: 'bottom',
+          tabBarOptions: {
+            labelStyle: { fontSize: 12 }
+          }
+        })
+      }
+    }, {
+      navigationOptions: {
+        tabBarVisible: true
+      },
+      lazyLoad: false
     });
 
     return (
