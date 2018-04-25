@@ -4,8 +4,9 @@ import Expo from 'expo';
 import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
-  { text: 'Welcome to JobApp' },
-  { text: 'Set your location, then swipe away.'}
+  { text: 'Welcome to JobApp', color: '#03A9F4' },
+  { text: 'Use this to find jobs.', color: '#009688' },
+  { text: 'Set your location, then swipe away.', color: '#03A9F4' }
 ];
 
 class WelcomeScreen extends Component {
