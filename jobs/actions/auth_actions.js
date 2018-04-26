@@ -8,14 +8,13 @@ import {
 // AsyncStorage.setItem('fb_token', token);
 // AsyncStorage.getItem('fb_token');
 
-export const facebookLogin = () => {
-
+export const facebookLogin = () => async dispatch => {
   let token = await AsyncStorage.getItem('fb_token');
+
   if (token) {
     // dispatch action saying fb login is done
   } else {
     // start up fb login process
     
   }
-
-};
+}
