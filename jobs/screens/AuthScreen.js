@@ -19,22 +19,16 @@ class AuthScreen extends Component {
   }
 
   onAuthComplete(props) {
-    if (props.token) {
-      this.props.navigation.navigate('map');
+    //if (props.token) {
+    // I STILL don't want to create a facebook account. :|
+    if (true) {
+        this.props.navigation.navigate('map');
     }
   }
 
   render() {
     return (
-      <View>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-        <Text>AuthScreen</Text>
-      </View>
+      <View />
     );
   }
 }
