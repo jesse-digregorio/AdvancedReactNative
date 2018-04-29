@@ -11,13 +11,11 @@ const SLIDE_DATA = [
   { text: 'Set your location, then swipe away.', color: '#03A9F4' }
 ];
 
-
-
 class WelcomeScreen extends Component {
-  state = { token: 'this is a token' }
+  state = { token: null }
 
   async componentWillMount() {
-    let token = await AsyncStorage.getItem('fb_token');
+    let token = 'no facebook plz'; //await AsyncStorage.getItem('fb_token');
 
     if (token) {
       this.props.navigation.navigate('map');
@@ -33,7 +31,8 @@ class WelcomeScreen extends Component {
 
   render() {
     if (_.isNull(this.state.token)) {
-      return <AppLoading />;
+      //return <AppLoading />;
+      return ( <Text>this is effed</Text>);
     }
 
     return (
