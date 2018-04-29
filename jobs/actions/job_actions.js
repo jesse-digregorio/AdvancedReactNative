@@ -23,7 +23,7 @@ const buildJobsUrl = (zip) => {
   return `${JOB_ROOT_URL}${query}`
 };
 
-export const fetchJobs = () => async (dispatch) => {
+export const fetchJobs = (region) => async (dispatch) => {
   try {
     let zip = await reverseGeocode(region);
     const url = buildJobsUrl(zip);
