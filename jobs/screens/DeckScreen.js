@@ -48,7 +48,7 @@ class DeckScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ marginTop: 10 }}>
         <Swipe
           data={this.props.jobs}
           renderCard={this.renderCard}
@@ -74,4 +74,4 @@ function mapStateToProps({ jobs }) {
   return { jobs: jobs.results };
 }
 
-export default connect(mapStateToProps)(DeckScreen);
+export default connect(mapStateToProps, actions)(DeckScreen);
