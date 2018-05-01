@@ -4,6 +4,7 @@ import qs from 'qs';
 
 import {
   FETCH_JOBS,
+  LIKE_JOB
 } from './types';
 
 const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?';
@@ -18,7 +19,7 @@ const JOB_QUERY_PARAMS = {
 }
 
 //AIzaSyCo8O3zJkRY1cJKy5fuW6rVZG58UCIB0HI
-
+//4201738803816157
 
 const buildJobsUrl = (zip) => {
   const query = qs.stringify({ ...JOB_QUERY_PARAMS, l: zip })
@@ -38,4 +39,9 @@ export const fetchJobs = (region, callback) => async (dispatch) => {
   }
 };
 
-//4201738803816157
+export const likeJob = (job) => {
+  return {
+    payload: job,
+    type: LIKE_JOB
+  };
+};
