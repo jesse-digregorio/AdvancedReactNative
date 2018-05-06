@@ -6,10 +6,13 @@ import { clearLikedJobs } from '../actions';
 
 class SettingsScreen extends Component {
   static navigationOptions = {
-    header: {
-      style: {
-        marginTop: Platform.OS === 'android' ? 24 : 0
-      }
+    // header: {
+    //   style: {
+    //     marginTop: Platform.OS === 'android' ? 24 : 0
+    //   }
+    // }
+    headerStyle: {
+      marginTop: Platform.OS === 'android' ? 24 : 0
     }
   }
 
@@ -19,7 +22,7 @@ class SettingsScreen extends Component {
         <Button
           title="Reset Liked Jobs"
           large
-          icon={{ name: 'delete-forever'}}
+          icon={{ name: 'delete-forever' }}
           backgroundColor='#F44336'
           onPress={this.props.clearLikedJobs}
         />
